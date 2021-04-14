@@ -1,0 +1,35 @@
+ALGORITHM overlapping
+VAR
+    set1,set2 : ARRAY_OF INTEGER[20];
+    set_keys : ARRAY_OF INTEGER[40];
+    T:= HASH_TABLE<INTEGER,INTEGER>;
+    i, count : INTEGER;
+    s : INTEGER := 0;
+BEGIN
+
+    FOR i FROM 0 TO set1.length -1 STEP 1  DO
+        IF (T.lookup(set1[i]) = TRUE) THEN
+            count := T.get(set1[i]);
+            T.insert(set1[i],count+1);
+        ELSE
+            T.insert(set1[i],1);
+        END_IF
+    END_FOR
+
+    FOR i FROM 0 TO set2.length -1 STEP 1  DO
+        IF (T.lookup(set2[i]) = TRUE) THEN
+            count := T.get(set2[i]);
+            T.insert(set2[i],count+1);
+        ELSE
+            T.insert(set2[i],1);
+        END_IF
+    END_FOR
+
+    set_keys := T.getKeys();
+    FOR i FROM 0 TO set_keys.length -1 STEP 1  DO
+        IF (T.get(set_keys[i]) = 2) THEN
+            s:= s+set_keys[i];
+        END_IF
+    END_FOR
+
+END 

@@ -1,0 +1,24 @@
+ALGORITHM DistinctElement //problem1 methode1
+VAR
+    set1 : ARRAY_OF INTEGER[20];
+    set2 : ARRAY_OF INTEGER[20];
+    s,i,j,l1,l2 : INTEGER;
+    l1=set1.length;
+    l2:=set2.length;
+BEGIN
+s:= 0;
+    FOR i FROM 0 TO l1 DO
+       Read(set1[i]);
+     FOR j FROM 0 TO l2 DO
+       Read(set2[j]);
+        IF (set1[i]<>set2[j]) THEN
+            s := s + set1[i];
+        END_IF
+     END_FOR
+   END_FOR
+   write("The sum is:" s);
+END
+
+
+
+

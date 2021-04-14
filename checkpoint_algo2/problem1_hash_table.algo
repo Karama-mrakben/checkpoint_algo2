@@ -1,0 +1,26 @@
+ALGORITHM distinctElement
+VAR
+    set1 : HASH_TABLE<INTEGER,INTEGER>;
+    set2 : HASH_TABLE<INTEGER,INTEGER>;
+    s,i,j,l1,l2  : INTEGER;
+    l1:=set1.length;
+    l2:=set2.length;
+BEGIN
+s:= 0;
+    FOR i FROM 0 TO l1-1 DO
+     set1.insert(i,set1[i]);
+     Read(set1[i]);
+     FOR j FROM 0 TO l2-1 DO
+     set2.insert(j,set2[j]);
+     Read(set2[j]);
+    END_FOR
+    END_FOR
+    WHILE(j<l2-1)DO
+        set2.insert(i,set2[j]);
+         IF (set2.lookup(set1[i]) = FALSE) THEN
+           s := s + set1.get(set2[j]) ;
+           j++;
+         END_IF
+   END_WHILE
+   write("The sum is:" s);
+END
